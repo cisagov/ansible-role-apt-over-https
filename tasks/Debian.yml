@@ -1,0 +1,9 @@
+---
+# Since Debian's official package repositories support HTTPS we can convert
+# every URL to use HTTPS instead of HTTP.
+- name: Convert any HTTP source URLs to use HTTPS
+  ansible.builtin.replace:
+    path: "{{ item }}"
+    regexp: '(deb(?:-src)? (?:\[[^\]]+\] )?)http://'
+    replace: '\1https://'
+  loop: "{{ apt_source_files }}"

@@ -1,0 +1,7 @@
+---
+# Perform necessary setup
+- name: Install apt-transport-https to support HTTPS repository URLs
+  ansible.builtin.apt:
+    force_apt_get: yes
+    name: apt-transport-https
+    update_cache: yes
