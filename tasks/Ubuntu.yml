@@ -4,6 +4,9 @@
 - name: Convert any non-official HTTP source URLs to use HTTPS
   ansible.builtin.replace:
     path: "{{ item }}"
+    # Looking for entries per the format specified in
+    # https://manpages.ubuntu.com/manpages/jammy/man5/sources.list.5.html
+    # with a negative lookahead for URIs containing ubuntu.com or canonical.com
     regexp: '(deb(?:-src)? (?:\[[^\]]+\] )?)http://(?!\S*(?:ubuntu|canonical)\.com)'
     replace: '\1https://'
   loop: "{{ apt_source_files }}"

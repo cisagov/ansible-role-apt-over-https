@@ -4,6 +4,8 @@
 - name: Convert any HTTP source URLs to use HTTPS
   ansible.builtin.replace:
     path: "{{ item }}"
+    # Looking for entries per the format specified in
+    # https://manpages.debian.org/bullseye/apt/sources.list.5.en.html#THE_DEB_AND_DEB-SRC_TYPES:_GENERAL_FORMAT
     regexp: '(deb(?:-src)? (?:\[[^\]]+\] )?)http://'
     replace: '\1https://'
   loop: "{{ apt_source_files }}"
