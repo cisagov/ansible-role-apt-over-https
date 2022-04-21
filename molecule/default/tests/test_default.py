@@ -26,7 +26,7 @@ def test_source_list_for_http(host, source_file):
 
     for source in sources:
         source_elements = source.split(" ")
-        # The second elements of a source entry can optionally be a set of options
+        # The second element of a source entry can optionally be a set of options
         # in the form "[options]".
         repository_url = source_elements[
             1 if not source_elements[1].startswith("[") else 2
