@@ -24,5 +24,8 @@
 
 - name: Update the cache using the updated sources
   ansible.builtin.apt:
-    force_apt_get: yes
     update_cache: yes
+  # This cache update can cause idempotence to fail, so tell molecule
+  # to ignore any changes this task produces when testing idempotence.
+  tags:
+    - molecule-idempotence-notest
