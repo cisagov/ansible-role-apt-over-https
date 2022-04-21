@@ -1,0 +1,5 @@
+---
+# Perform necessary setup
+- name: Install apt-transport-https to support HTTPS repository URLs
+  ansible.builtin.apt:
+    name: apt-transport-https

@@ -1,0 +1,9 @@
+---
+# Since Ubuntu's official package repositories **do not** support HTTPS
+# we cannot convert every URL to use HTTPS instead of HTTP. We must skip
+# any URLs that use the official repositories.
+
+# Looking for entries per the format specified in
+# https://manpages.ubuntu.com/manpages/jammy/man5/sources.list.5.html
+# with a negative lookahead for URIs containing ubuntu.com or canonical.com
+source_regexp: '(deb(?:-src)? (?:\[[^\]]+\] )?)http://(?!\S*(?:ubuntu|canonical)\.com)'
