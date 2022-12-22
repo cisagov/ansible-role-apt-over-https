@@ -1,8 +1,7 @@
 # ansible-role-apt-over-https #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-apt-over-https/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-apt-over-https/actions)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-apt-over-https.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-apt-over-https/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-apt-over-https.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-apt-over-https/context:python)
+[![CodeQL](https://github.com/cisagov/ansible-role-apt-over-https/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-apt-over-https/actions/workflows/codeql-analysis.yml)
 
 This is an Ansible role to convert any repository entries in [apt](https://wiki.debian.org/Apt)
 [SourceList](https://wiki.debian.org/SourcesList) files that use HTTP to
@@ -39,8 +38,10 @@ Here's how to use it in a playbook:
 - hosts: all
   become: yes
   become_method: sudo
-  roles:
-    - apt_over_https
+  tasks:
+    - name: Modify any HTTP apt repos to use HTTPS
+      ansible.builtin.include_role:
+        name: apt_over_https
 ```
 
 ## Contributing ##
