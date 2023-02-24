@@ -1,6 +1,4 @@
 ---
-# tasks file for apt-over-https
-
 - name: Perform any setup before altering apt repository URLs
   ansible.builtin.include_tasks: setup.yml
 
