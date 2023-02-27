@@ -13,29 +13,12 @@
       paths:
         - "{{ role_path }}/vars"
 
-- name: Find all files that could contain Debian package repos
-  block:
-    - name: Find /etc/apt/sources.list
-      ansible.builtin.find:
-        follow: yes
-        paths:
-          - /etc/apt
-        patterns:
-          - sources.list
-      register: sources_list
-    - name: Find all files in /etc/apt/sources.list.d
-      ansible.builtin.find:
-        follow: yes
-        paths:
-          - /etc/apt/sources.list.d
-      register: sources_list_d
-
 - name: Convert any HTTP source URLs to use HTTPS according to the OS type
   ansible.builtin.replace:
-    path: "{{ item.path }}"
+    path: "{{ item }}"
     regexp: "{{ source_regexp }}"
     replace: '\1https://'
-  loop: "{{ sources_list.files }} + {{ sources_list_d.files }}"
+  loop: "{{ apt_source_files }}"
 
 - name: Update the cache using the updated sources
   ansible.builtin.apt:
