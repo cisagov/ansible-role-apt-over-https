@@ -1,4 +1,8 @@
 ---
+# A list of apt source files to modify
+apt_source_files:
+  - /etc/apt/sources.list
+
 # Since Ubuntu's official package repositories **do not** support HTTPS
 # we cannot convert every URL to use HTTPS instead of HTTP. We must skip
 # any URLs that use the official repositories.
