@@ -18,17 +18,9 @@ def test_apt_https_support(host, pkg):
     assert host.package(pkg).is_installed
 
 
-def test_source_list_for_http(host):
+@pytest.mark.parametrize("source_file", ["/etc/apt/sources.list"])
+def test_source_list_for_http(host, source_file):
     """Check if the source list file has any URLs still using HTTP."""
-    source_file = "/etc/apt/sources.list"
-    # As of Debian Bullseye the /etc/apt/sources.list file has moved
-    # to /etc/apt/sources.list.d/debian.sources
-    if (
-        host.system_info.distribution == "debian"
-        and host.system_info.codename == "bookworm"
-    ):
-        source_file = "/etc/apt/sources.list.d/debian.sources"
-
     file_lines = host.file(source_file).content_string.split(os.linesep)
     sources = [line for line in file_lines if line.startswith("deb")]
 

@@ -1,8 +1,4 @@
 ---
-# A list of apt source files to modify
-apt_source_files:
-  - /etc/apt/sources.list
-
 # Since Debian's official package repositories support HTTPS we can convert
 # every URL to use HTTPS instead of HTTP.
 
