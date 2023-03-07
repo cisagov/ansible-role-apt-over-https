@@ -13,12 +13,21 @@
       paths:
         - "{{ role_path }}/vars"
 
+- name: Check that the SourceList file exists
+  ansible.builtin.stat:
+    path: "{{ item }}"
+  register: sl
+  loop: "{{ apt_source_files }}"
+
 - name: Convert any HTTP source URLs to use HTTPS according to the OS type
   ansible.builtin.replace:
-    path: "{{ item }}"
+    path: "{{ item.stat.path }}"
     regexp: "{{ source_regexp }}"
     replace: '\1https://'
-  loop: "{{ apt_source_files }}"
+  when: item.stat.exists
+  loop: "{{ sl.results }}"
+  loop_control:
+    label: "{{ item.item }}"
 
 - name: Update the cache using the updated sources
   ansible.builtin.apt:

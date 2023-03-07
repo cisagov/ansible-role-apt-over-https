@@ -1,3 +1,4 @@
 # List of apt source files to modify
 apt_source_files:
   - /etc/apt/sources.list
+  - /etc/apt/sources.list.d/debian.sources
