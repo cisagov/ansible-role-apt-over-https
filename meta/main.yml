@@ -1,8 +1,9 @@
 ---
+dependencies: []
 galaxy_info:
   author: Nicholas McDonnell
-  description: Convert apt repository URLs from HTTP to HTTPS
   company: CISA Cyber Assessments
+  description: Convert apt repository URLs from HTTP to HTTPS
   galaxy_tags:
     - apt
     - https
@@ -30,5 +31,3 @@ galaxy_info:
         - focal
         - jammy
   role_name: apt_over_https
-
-dependencies: []

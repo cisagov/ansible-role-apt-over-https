@@ -1,6 +1,4 @@
 ---
-# tasks file for apt-over-https
-
 - name: Perform any setup before altering apt repository URLs
   ansible.builtin.include_tasks: setup.yml
 
@@ -15,12 +13,21 @@
       paths:
         - "{{ role_path }}/vars"
 
+- name: Check that the SourceList file exists
+  ansible.builtin.stat:
+    path: "{{ item }}"
+  loop: "{{ apt_source_files }}"
+  register: sl
+
 - name: Convert any HTTP source URLs to use HTTPS according to the OS type
   ansible.builtin.replace:
-    path: "{{ item }}"
+    path: "{{ item.stat.path }}"
     regexp: "{{ source_regexp }}"
     replace: '\1https://'
-  loop: "{{ apt_source_files }}"
+  loop: "{{ sl.results }}"
+  loop_control:
+    label: "{{ item.item }}"
+  when: item.stat.exists
 
 - name: Update the cache using the updated sources
   ansible.builtin.apt:
