@@ -6,4 +6,4 @@ apt_source_files:
 
 # A boolean indicating whether or not to modify existing apt package
 # repositories to use HTTPS.
-modify_existing_apt_repos: yes
+prerequisites_only: no

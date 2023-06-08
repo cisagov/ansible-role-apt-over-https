@@ -20,7 +20,7 @@ None.
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
 | apt_source_files | A list of apt source files to modify.  Files that do not exist will be ignored. | `[/etc/apt/sources.list, /etc/apt/sources.list.d/debian.sources]` | No |
-| modify_existing_apt_repos | A boolean indicating whether or not to modify existing apt package repositories to use HTTPS. | `yes` | No |
+| prerequisites_only | If yes then only the prerequisites necessary to modify apt package repositories to use HTTPS will be installed. | `no` | No |
 
 ## Dependencies ##
 

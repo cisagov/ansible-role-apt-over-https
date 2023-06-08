@@ -8,5 +8,5 @@
 
     - name: Modify existing apt package repos to use HTTPS
       ansible.builtin.include_tasks: modify.yml
-      when: modify_existing_apt_repos
+      when: not prerequisites_only
   when: ansible_os_family == "Debian"
