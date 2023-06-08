@@ -1,0 +1,35 @@
+---
+- name: Load the var file with regexp definition based on the OS type
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
+
+- name: Check that the SourceList file exists
+  ansible.builtin.stat:
+    path: "{{ item }}"
+  loop: "{{ apt_source_files }}"
+  register: sl
+
+- name: Convert any HTTP source URLs to use HTTPS according to the OS type
+  ansible.builtin.replace:
+    path: "{{ item.stat.path }}"
+    regexp: "{{ source_regexp }}"
+    replace: '\1https://'
+  loop: "{{ sl.results }}"
+  loop_control:
+    label: "{{ item.item }}"
+  when: item.stat.exists
+
+- name: Update the cache using the updated sources
+  ansible.builtin.apt:
+    update_cache: yes
+  # This cache update can cause idempotence to fail, so tell molecule
+  # to ignore any changes this task produces when testing idempotence.
+  tags:
+    - molecule-idempotence-notest
