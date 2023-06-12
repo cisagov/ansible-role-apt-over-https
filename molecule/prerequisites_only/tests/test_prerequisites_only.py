@@ -23,7 +23,7 @@ def test_source_list_for_http(host):
     """Ensure the source list file has all URLs using HTTP."""
     if host.system_info.distribution in ["debian", "kali", "ubuntu"]:
         source_file = "/etc/apt/sources.list"
-        # As of Debian Bullseye the /etc/apt/sources.list file has
+        # As of Debian Bookworm the /etc/apt/sources.list file has
         # moved to /etc/apt/sources.list.d/debian.sources
         if (
             host.system_info.distribution == "debian"
