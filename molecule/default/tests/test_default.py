@@ -4,19 +4,11 @@
 import os
 
 # Third-Party Libraries
-import pytest
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ["MOLECULE_INVENTORY_FILE"]
 ).get_hosts("all")
-
-
-@pytest.mark.parametrize("pkg", ["apt-transport-https"])
-def test_apt_https_support(host, pkg):
-    """Ensure apt has support for repository URLs using HTTPS."""
-    if host.system_info.distribution in ["debian", "kali", "ubuntu"]:
-        assert host.package(pkg).is_installed
 
 
 def test_source_list_for_http(host):

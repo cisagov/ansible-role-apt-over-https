@@ -3,7 +3,3 @@
 apt_source_files:
   - /etc/apt/sources.list
   - /etc/apt/sources.list.d/debian.sources
-
-# A boolean indicating whether or not to modify existing apt package
-# repositories to use HTTPS.
-prerequisites_only: no

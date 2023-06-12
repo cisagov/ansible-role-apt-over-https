@@ -1,9 +1,0 @@
----
-- name: Converge
-  hosts: all
-  tasks:
-    - name: Include ansible-role-apt-over-https
-      ansible.builtin.include_role:
-        name: ansible-role-apt-over-https
-      vars:
-        prerequisites_only: yes

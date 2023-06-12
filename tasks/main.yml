@@ -1,12 +1,4 @@
 ---
-- name: >-
-    Install prerequisites for use of HTTPS with apt and optionally
-    modify existing apt package repos to use HTTPS
-  block:
-    - name: Install prerequisites for use of HTTPS with apt
-      ansible.builtin.include_tasks: prerequisites.yml
-
-    - name: Modify existing apt package repos to use HTTPS
-      ansible.builtin.include_tasks: modify.yml
-      when: not prerequisites_only
+- name: Modify existing apt package repos to use HTTPS
+  ansible.builtin.include_tasks: modify.yml
   when: ansible_os_family == "Debian"
