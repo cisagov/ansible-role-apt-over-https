@@ -16,11 +16,18 @@ galaxy_info:
   min_ansible_version: "2.10"
   namespace: cisagov
   platforms:
+    - name: Amazon Linux 2023
+      versions:
+        - any
     - name: Debian
       versions:
         - buster
         - bullseye
         - bookworm
+    - name: Fedora
+      versions:
+        - "37"
+        - "38"
     - name: Kali
       versions:
         - "2023"
