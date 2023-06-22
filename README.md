@@ -19,7 +19,7 @@ None.
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| apt_source_files | A list of apt source files to modify.  Files that do not exist will be ignored. | `[/etc/apt/sources.list, /etc/apt/sources.list.d/debian.sources]` | No |
+| apt_over_https_apt_source_files | A list of apt source files to modify.  Files that do not exist will be ignored. | `[/etc/apt/sources.list, /etc/apt/sources.list.d/debian.sources]` | No |
 
 ## Dependencies ##
 
