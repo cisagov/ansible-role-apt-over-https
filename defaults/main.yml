@@ -1,5 +1,5 @@
-# List of apt source files to modify.  Files that do not exist will be
-# ignored.
-apt_source_files:
+# A list of apt source files to modify.  Files that do not exist will
+# be ignored.
+apt_over_https_apt_source_files:
   - /etc/apt/sources.list
   - /etc/apt/sources.list.d/debian.sources

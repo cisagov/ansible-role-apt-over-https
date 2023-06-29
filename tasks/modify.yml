@@ -13,7 +13,7 @@
 - name: Check that the SourceList file exists
   ansible.builtin.stat:
     path: "{{ item }}"
-  loop: "{{ apt_source_files }}"
+  loop: "{{ apt_over_https_apt_source_files }}"
   register: sl
 
 - name: Convert any HTTP source URLs to use HTTPS according to the OS type
