@@ -17,10 +17,7 @@ def test_source_list_for_http(host):
         source_file = "/etc/apt/sources.list"
         # As of Debian Bookworm the /etc/apt/sources.list file has
         # moved to /etc/apt/sources.list.d/debian.sources
-        if (
-            host.system_info.distribution == "debian"
-            and host.system_info.codename == "bookworm"
-        ):
+        if host.system_info.codename in ["bookworm", "trixie"]:
             source_file = "/etc/apt/sources.list.d/debian.sources"
 
         file_lines = host.file(source_file).content_string.split(os.linesep)
