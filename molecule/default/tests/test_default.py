@@ -14,11 +14,15 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def test_source_list_for_http(host):
     """Check if the source list file has any URLs still using HTTP."""
     if host.system_info.distribution in ["debian", "kali", "ubuntu"]:
-        source_file = "/etc/apt/sources.list"
-        # As of Debian Bookworm the /etc/apt/sources.list file has
-        # moved to /etc/apt/sources.list.d/debian.sources
-        if host.system_info.codename in ["bookworm", "trixie"]:
+        if host.system_info.distribution in ["kali", "ubuntu"]:
+            source_file = "/etc/apt/sources.list"
+        if host.system_info.distribution == "debian":
+            # As of Debian Bookworm the /etc/apt/sources.list file has
+            # moved to /etc/apt/sources.list.d/debian.sources
             source_file = "/etc/apt/sources.list.d/debian.sources"
+
+            if host.system_info.codename in ["buster", "bullseye"]:
+                source_file = "/etc/apt/sources.list"
 
         file_lines = host.file(source_file).content_string.split(os.linesep)
         sources = [line for line in file_lines if line.startswith("deb")]
