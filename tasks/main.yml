@@ -1,6 +1,6 @@
 ---
 - name: Modify existing apt package repos to use HTTPS
-  when: ansible_os_family == "Debian"
+  when: ansible_pkg_mgr == "apt"
   block:
     - name: Load the var file with regexp definition based on the OS type
       ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
