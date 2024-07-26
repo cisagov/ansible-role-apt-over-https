@@ -2,4 +2,6 @@
 # be ignored.
 apt_over_https_apt_source_files:
   - /etc/apt/sources.list
+  - /etc/apt/sources.list.d/backports.list
+  - /etc/apt/sources.list.d/backports.sources
   - /etc/apt/sources.list.d/debian.sources

@@ -14,7 +14,12 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 @pytest.mark.parametrize(
     "sourcelist_file",
-    ["/etc/apt/sources.list", "/etc/apt/sources.list.d/debian.sources"],
+    [
+        "/etc/apt/sources.list",
+        "/etc/apt/sources.list.d/backports.list",
+        "/etc/apt/sources.list.d/backports.sources",
+        "/etc/apt/sources.list.d/debian.sources",
+    ],
 )
 def test_source_list_for_http(host, sourcelist_file):
     """Check if the source list file has any URLs still using HTTP."""
