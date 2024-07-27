@@ -193,6 +193,7 @@ jobs:
           - ubuntu-22-systemd
           - ubuntu-24-systemd
         scenario:
+          - backports_support
           - default
     steps:
       - id: harden-runner

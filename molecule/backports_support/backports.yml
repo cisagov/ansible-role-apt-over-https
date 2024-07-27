@@ -1,0 +1,9 @@
+---
+- name: Configure backports repository
+  hosts: all
+  become: true
+  become_method: ansible.builtin.sudo
+  tasks:
+    - name: Add backports repository
+      ansible.builtin.include_role:
+        name: backports
