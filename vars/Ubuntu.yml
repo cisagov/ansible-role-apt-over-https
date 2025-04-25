@@ -6,4 +6,10 @@
 # Looking for entries per the format specified in
 # https://manpages.ubuntu.com/manpages/jammy/man5/sources.list.5.html
 # with a negative lookahead for URIs containing ubuntu.com or canonical.com
+#
+# yamllint/ansible-lint complain about this line being quoted, but we
+# want to avoid conflict between regex escapes and YAML string
+# escapes.
+#
+# yamllint disable rule:quoted-strings
 source_regexp: '(deb(?:-src)? (?:\[[^\]]+\] )?)http://(?!\S*(?:ubuntu|canonical)\.com)'

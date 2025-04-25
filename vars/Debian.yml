@@ -4,4 +4,10 @@
 
 # Looking for entries per the format specified in
 # https://manpages.debian.org/bullseye/apt/sources.list.5.en.html#THE_DEB_AND_DEB-SRC_TYPES:_GENERAL_FORMAT
+#
+# yamllint/ansible-lint complain about this line being quoted, but we
+# want to avoid conflict between regex escapes and YAML string
+# escapes.
+#
+# yamllint disable rule:quoted-strings
 source_regexp: '(deb(?:-src)? (?:\[[^\]]+\] )?)http://'

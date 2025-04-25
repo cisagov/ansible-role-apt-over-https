@@ -23,6 +23,11 @@
       ansible.builtin.replace:
         path: "{{ item.stat.path }}"
         regexp: "{{ source_regexp }}"
+        # yamllint/ansible-lint complain about this line being quoted,
+        # but we want to avoid conflict between regex escapes and YAML
+        # string escapes.
+        #
+        # yamllint disable rule:quoted-strings
         replace: '\1https://'
       loop: "{{ sl.results }}"
       loop_control:
