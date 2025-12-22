@@ -1,6 +1,7 @@
 # ansible-role-apt-over-https #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-apt-over-https/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-apt-over-https/actions)
+[![License](https://img.shields.io/github/license/cisagov/ansible-role-apt-over-https)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/ansible-role-apt-over-https/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-apt-over-https/actions/workflows/codeql-analysis.yml)
 
 This is an Ansible role to convert any repository entries in [apt](https://wiki.debian.org/Apt)
