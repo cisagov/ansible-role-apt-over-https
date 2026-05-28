@@ -48,10 +48,10 @@ def test_apt_update(host):
         # $ apt update
         # Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
         # Get:2 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
-        # Get:3 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [928 kB]
+        # Get:3 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [928 kB]  # noqa: B950
         # Get:4 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]
         # <snip>
-        # Get:18 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [49.4 kB]
+        # Get:18 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [49.4 kB]  # noqa: B950
         # Fetched 24.9 MB in 3s (9622 kB/s)
         # Reading packlists... Done
         # Building dependency tree... Done
